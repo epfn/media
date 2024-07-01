@@ -1,16 +1,17 @@
 ---
+import Layout from "../components/Layout.astro";
 
+const items: string[] = ["breakpoints.html"];
 ---
 
-<html lang="en">
-	<head>
-		<meta charset="utf-8" />
-		<link rel="icon" type="image/svg+xml" href="/favicon.svg" />
-		<meta name="viewport" content="width=device-width" />
-		<meta name="generator" content={Astro.generator} />
-		<title>Astro</title>
-	</head>
-	<body>
-		<h1>Astro</h1>
-	</body>
-</html>
+<Layout>
+  <div class="flex flex-col gap-4">
+    {
+      items.map((href) => (
+        <a class="bg-blue-600 rounded p-4 text-white hover:bg-blue-700" {href}>
+          {href}
+        </a>
+      ))
+    }
+  </div>
+</Layout>
