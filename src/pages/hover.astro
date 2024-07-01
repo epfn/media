@@ -3,27 +3,21 @@ import Back from "../components/Back.astro";
 import Layout from "../components/Layout.astro";
 import { Code } from "astro:components";
 
-const full = `#box {
-  background-color: red;
+const full = `#box:hover {
+  background-color: brown;
 }
-  
-@media (max-width: 992px) { 
+
+@media (hover: hover) {
   #box {
     background-color: blue;
   }
-};
+}
 
-@media (max-width: 768px) { 
+@media (hover: none) {
   #box {
     background-color: green;
   }
-};
-
-@media (max-width: 576px) { 
-  #box {
-    background-color: blueviolet;
-  }
-};
+}
 `;
 ---
 
@@ -42,37 +36,19 @@ const full = `#box {
 </Layout>
 
 <style>
-  #box {
+  #box:hover {
     background-color: brown;
   }
 
-  @media (max-width: 992px) {
+  @media (hover: hover) {
     #box {
       background-color: blue;
     }
   }
 
-  @media (max-width: 768px) {
+  @media (hover: none) {
     #box {
       background-color: green;
     }
   }
-
-  @media (max-width: 576px) {
-    #box {
-      background-color: blueviolet;
-    }
-  }
 </style>
-
-<script>
-  const box = document.getElementById("box");
-
-  if (box) {
-    box.innerText = +window.innerWidth + "px";
-    window.addEventListener(
-      "resize",
-      () => (box.innerText = +window.innerWidth + "px")
-    );
-  }
-</script>

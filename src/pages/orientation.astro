@@ -3,27 +3,17 @@ import Back from "../components/Back.astro";
 import Layout from "../components/Layout.astro";
 import { Code } from "astro:components";
 
-const full = `#box {
-  background-color: red;
-}
-  
-@media (max-width: 992px) { 
+const full = `@media (orientation: landscape) {
   #box {
     background-color: blue;
   }
-};
+}
 
-@media (max-width: 768px) { 
+@media (orientation: portrait) {
   #box {
     background-color: green;
   }
-};
-
-@media (max-width: 576px) { 
-  #box {
-    background-color: blueviolet;
-  }
-};
+}
 `;
 ---
 
@@ -42,25 +32,15 @@ const full = `#box {
 </Layout>
 
 <style>
-  #box {
-    background-color: brown;
-  }
-
-  @media (max-width: 992px) {
+  @media (orientation: landscape) {
     #box {
       background-color: blue;
     }
   }
 
-  @media (max-width: 768px) {
+  @media (orientation: portrait) {
     #box {
       background-color: green;
-    }
-  }
-
-  @media (max-width: 576px) {
-    #box {
-      background-color: blueviolet;
     }
   }
 </style>
@@ -69,10 +49,10 @@ const full = `#box {
   const box = document.getElementById("box");
 
   if (box) {
-    box.innerText = +window.innerWidth + "px";
+    box.innerText = `${window.innerWidth}px / ${window.innerHeight}px`;
     window.addEventListener(
       "resize",
-      () => (box.innerText = +window.innerWidth + "px")
+      () => (box.innerText = `${window.innerWidth}px / ${window.innerHeight}px`)
     );
   }
 </script>
